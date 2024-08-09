@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.16.6",
     "@mui/lab": "^5.0.0-alpha.172",
     "@mui/material": "^5.16.6",
+    "@mui/styles": "^5.16.7",
     "@mui/system": "^5.16.6",
     "@mui/x-data-grid": "^6.20.0",
     "@reduxjs/toolkit": "^2.2.5",
