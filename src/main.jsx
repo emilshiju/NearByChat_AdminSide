@@ -10,14 +10,15 @@ import { Responsive } from './context/createContext.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(
+render(
   <React.StrictMode>
     <Responsive>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Responsive>
-  </React.StrictMode>
+  </React.StrictMode>,
+  root
 );
 
 
