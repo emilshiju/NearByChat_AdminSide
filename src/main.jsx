@@ -10,7 +10,7 @@ import { Responsive } from './context/createContext.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <Responsive>
       <BrowserRouter>
