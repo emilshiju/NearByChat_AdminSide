@@ -6,7 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { Responsive } from './context/createContext.jsx';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+
+
+ReactDOM.render(
   <React.StrictMode>
     <Responsive >
     <BrowserRouter>
@@ -16,4 +18,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
     </Responsive>
   </React.StrictMode>,
+  document.getElementById('root')
 )
