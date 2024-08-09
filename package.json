@@ -19,8 +19,9 @@
     "@mui/icons-material": "^5.16.7",
     "@mui/lab": "^5.0.0-alpha.172",
     "@mui/material": "^5.16.7",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@mui/styles": "^5.16.7",
-    "@mui/system": "^5.16.6",
+    "@mui/system": "^5.16.7",
     "@mui/x-data-grid": "^6.20.0",
     "@reduxjs/toolkit": "^2.2.5",
     "apexcharts": "^3.51.0",
@@ -36,6 +37,7 @@
     "react-router-dom": "^6.23.1",
     "react-toastify": "^10.0.5",
     "socket.io-client": "^4.7.5",
+    "styled-components": "^6.1.12",
     "sweetalert2": "^11.6.13",
     "yup": "^1.4.0"
   },
