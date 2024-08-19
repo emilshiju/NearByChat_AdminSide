@@ -18,7 +18,7 @@ const SubscriptionList = () => {
 
 
   useEffect(() => {
-    axios.get("http://localhost:5000/allSubscriptionDetails").then((res) => {
+    axios.get("https://anonymous10.cloud/allSubscriptionDetails").then((res) => {
       console.log(res.data);
       if (res.data.data) {
         setAllPaymentSubscriptionDetails(res.data.data);

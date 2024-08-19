@@ -141,7 +141,7 @@ const AppView = () => {
   const { responsiveMd, setResponsiveMd } = useContext(responsiveContext);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/getDashboard").then((a) => {
+    axios.get("https://anonymous10.cloud/getDashboard").then((a) => {
       if (a.data.data) {
         setDailySales(a.data.data.totalAmountDaily[0]?.totalSum | 0);
         setCountOfAllUser(a.data.data.countAlluser);

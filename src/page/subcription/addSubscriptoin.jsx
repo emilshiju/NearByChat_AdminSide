@@ -126,7 +126,7 @@ const AddSubscription = () => {
 
         getDownloadURL(snapshot.ref).then((downloadURL) => {
           axios
-            .post("http://localhost:5000/saveSearchSubscription", {
+            .post("https://anonymous10.cloud/saveSearchSubscription", {
               name: values.name,
               maxCount: values.countOfSearch,
               price: values.price,

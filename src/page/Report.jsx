@@ -74,7 +74,7 @@ const Report = () => {
   const changeReadStatus = (reportId, sta) => {
     const status = !sta;
 
-    axios.patch("http://localhost:5000/changeReportStatus", {
+    axios.patch("https://anonymous10.cloud/changeReportStatus", {
       reportId,
       status,
     });

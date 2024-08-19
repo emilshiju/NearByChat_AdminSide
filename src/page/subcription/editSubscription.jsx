@@ -132,11 +132,9 @@ const EditSubscription = () => {
       //    .test('fileType', 'Unsupported file format', value => value && ['image/jpeg', 'image/png'].includes(value.type)),
     }),
     onSubmit: (values, { resetForm }) => {
-     
-
       if (typeof formik.values.image === "string") {
         axios
-          .put("http://localhost:5000/updateSearchSubscription", {
+          .put("https://anonymous10.cloud/updateSearchSubscription", {
             data: {
               name: values.name,
               maxCount: values.countOfSearch,

@@ -10,7 +10,7 @@ import Pagination from "../component/pagination";
 
 import io from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://anonymous10.cloud");
 
 import Swal from "sweetalert2";
 import { responsiveContext } from "../context/createContext";
@@ -32,7 +32,7 @@ const Userslist = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/getAllUsers", {
+      .get("https://anonymous10.cloud/getAllUsers", {
         headers: {
           // Define your headers here
           "Content-Type": "application/json", // Example content type
@@ -60,7 +60,7 @@ const Userslist = () => {
     // API call or other actions to be performed with debounced value
 
     axios
-      .get(`http://localhost:5000/searchUsers?value=${value}`, {
+      .get(`https://anonymous10.cloud/searchUsers?value=${value}`, {
         headers: {
           // Define your headers here
           "Content-Type": "application/json", // Example content type
@@ -111,7 +111,7 @@ const Userslist = () => {
 
           axios
             .patch(
-              "http://localhost:5000/blockUser",
+              "https://anonymous10.cloud/blockUser",
               { id, status },
               {
                 headers: {
@@ -143,7 +143,7 @@ const Userslist = () => {
     } else {
       axios
         .patch(
-          "http://localhost:5000/blockUser",
+          "https://anonymous10.cloud/blockUser",
           { id, status },
           {
             headers: {
@@ -178,12 +178,12 @@ const Userslist = () => {
     const readableDate = date.toLocaleDateString("en-US", options);
 
     const s = readableDate?.split(",");
-    console.log(s);
-    let r = s[0];
-    console.log(r);
+   
+    const r = s[0];
+  
     const a = r.split(" ");
     a.reverse();
-    let p = a.join(" ");
+    const p = a.join(" ");
     const final = p + s[1];
 
     return final;

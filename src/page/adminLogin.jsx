@@ -34,12 +34,8 @@ const AdminLogin = () => {
     let email = values.email;
     let password = values.password;
 
-    console.log(email);
-    console.log(password);
-
-    alert("skdjfsdjfiosd");
     axios
-      .post("http://localhost:5000/adminLogin", { email, password })
+      .post("https://anonymous10.cloud/adminLogin", { email, password })
       .then((response) => {
         if (response.data.status) {
           dispatch(
