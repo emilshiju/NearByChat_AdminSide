@@ -59,8 +59,7 @@ const ListSubscription=()=>{
             cancelButtonText: 'Cancel',
           }).then((result) => {
             if (result.isConfirmed) {
-              // Perform the delete operation here
-              console.log('Subscription deleted');
+             
               axios.delete(`http://localhost:5000/deleteSearchSubscription/${id}`)
               .then((res)=>{
                 if(res.data.status){
@@ -91,17 +90,17 @@ const ListSubscription=()=>{
         console.log("Viewport Size Changed");
         console.log("Width:", screenWidth, "Height:", screenHeight);
       
-        if (screenWidth <= 375 && screenHeight <= 667) {
-          console.log("Small screen");
-        
-        //   setOpen(false);
-          setResponsiveMd(false);
-        } else if (screenWidth > 400 && screenHeight > 700) {
-          console.log("Large screen");
-       
-        //   setOpen(true);
-          setResponsiveMd(true);
-        }
+        if (screenWidth <= 786 && screenHeight <= 786) {
+            console.log("Small screen");
+          
+          //   setOpen(false);
+            setResponsiveMd(false);
+          } else  {
+            console.log("Large screen");
+         
+          //   setOpen(true);
+            setResponsiveMd(true);
+          }
       };
       
       useEffect(() => {

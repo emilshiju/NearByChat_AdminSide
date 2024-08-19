@@ -1,4 +1,4 @@
-import { useEffect, useState ,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import Header from "../component/header";
 import SidebarBox from "../component/sidebar";
 import axios from "axios";
@@ -14,9 +14,7 @@ const Report = () => {
 
   const [allReport, setAllReport] = useState(null);
 
-
-  const {responsiveMd,setResponsiveMd}=useContext(responsiveContext)
-
+  const { responsiveMd, setResponsiveMd } = useContext(responsiveContext);
 
   useEffect(() => {
     // axios.get('http://localhost:5000/getAllReports')
@@ -36,45 +34,34 @@ const Report = () => {
       });
   }, []);
 
- 
-   
-  const [value,setSearchReports]=useState('')
-
+  const [value, setSearchReports] = useState("");
 
   const debouncedSearchTerm = useDebouncedValue(value, 500);
 
-
-  useEffect(()=>{
-
-    
-    axios.get(`http://localhost:5000/searchReports?value=${value}`,{
-      headers: {
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/searchReports?value=${value}`, {
+        headers: {
           // Define your headers here
-          'Content-Type': 'application/json', // Example content type
-          'authorization': `Bearer ${token}` // Assuming token is stored and retrieved correctly
-        }
-  })
-  .then((response)=>{
-     
-      setAllReport(response.data.data)
-  })
+          "Content-Type": "application/json", // Example content type
+          authorization: `Bearer ${token}`, // Assuming token is stored and retrieved correctly
+        },
+      })
+      .then((response) => {
+        setAllReport(response.data.data);
+      });
+  }, [debouncedSearchTerm]);
 
-  },[debouncedSearchTerm])
+  const onChangeSearchReports = (e) => {
+    let values = e.target.value;
 
-  const onChangeSearchReports=(e)=>{
-
-    let values=e.target.value
-
-    setSearchReports(values)
-  }
-   
-
+    setSearchReports(values);
+  };
 
   const [viewReason, setViewReason] = useState(false);
   const [showReason, setShowReason] = useState(null);
 
   const onChangeViewReason = (id, allReason) => {
-   
     setShowReason(id);
     setViewReason(allReason);
   };
@@ -84,56 +71,49 @@ const Report = () => {
     setShowReason(null);
   };
 
+  const changeReadStatus = (reportId, sta) => {
+    const status = !sta;
 
-  const changeReadStatus=(reportId,sta)=>{
-    const status=!sta
-
-      axios.patch('http://localhost:5000/changeReportStatus',{reportId,status})
-
-  }
-
-
+    axios.patch("http://localhost:5000/changeReportStatus", {
+      reportId,
+      status,
+    });
+  };
 
   const handleResize = () => {
     const screenWidth = window.screen.width;
     const screenHeight = window.screen.height;
-  
+
     // const screenWidth = window.innerWidth; // Use innerWidth for viewport width
     // const screenHeight = window.innerHeight; // Use innerHeight for viewport height
-  
-    console.log("Viewport Size Changed");
+
     console.log("Width:", screenWidth, "Height:", screenHeight);
-  
-    if (screenWidth <= 375 && screenHeight <= 667) {
+    if (screenWidth <= 786 && screenHeight <= 786) {
       console.log("Small screen");
-    
-    //   setOpen(false);
+
+      //   setOpen(false);
       setResponsiveMd(false);
-    } else if (screenWidth > 400 && screenHeight > 700) {
+    } else {
       console.log("Large screen");
-   
-    //   setOpen(true);
+
+      //   setOpen(true);
       setResponsiveMd(true);
     }
   };
-  
+
   useEffect(() => {
     // Call handleResize once to set the initial state
     handleResize();
-  
+
     // Add the event listener
     window.addEventListener("resize", handleResize);
-  
+
     // Clean up the event listener
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-
-
-
-  
   return (
     <div>
       <div>
@@ -142,12 +122,12 @@ const Report = () => {
         <div style={{ paddingTop: "20px" }}>
           <br></br>
           <div>
-            <div className=" bg-white dark:bg-gray-800 ">
+            <div className=" bg-white dark:bg-gray-800 h-screen ">
               <br></br>
 
               <div
                 style={{
-                  paddingLeft:responsiveMd? "280px":"0px",
+                  paddingLeft: responsiveMd ? "280px" : "0px",
                   paddingTop: "40px",
                   paddingRight: "10px",
                 }}
@@ -175,9 +155,7 @@ const Report = () => {
                         />
                       </div>
                     </form>
-                    <div className="flex pl-0 mt-3 space-x-1 sm:pl-2 sm:mt-0">
-                      
-                    </div>
+                    <div className="flex pl-0 mt-3 space-x-1 sm:pl-2 sm:mt-0"></div>
                   </div>
                 </div>
               </div>
@@ -185,10 +163,15 @@ const Report = () => {
               <br></br>
 
               {viewReason && (
-                <div className="absolute inset-0 flex justify-center items-center" >
+                <div className="absolute inset-0 flex justify-center items-center">
                   <div
                     className="relative bg-white rounded-lg shadow dark:bg-gray-700"
-                    style={{ width: responsiveMd  ? "400px":"300px", maxHeight: "300px", overflowY: "auto" ,marginLeft: responsiveMd ? "500px" :"0px"}} 
+                    style={{
+                      width: responsiveMd ? "400px" : "300px",
+                      maxHeight: "300px",
+                      overflowY: "auto",
+                      marginLeft: responsiveMd ? "500px" : "0px",
+                    }}
                   >
                     <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                       <h3 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -231,7 +214,10 @@ const Report = () => {
                 </div>
               )}
 
-              <div className="flex flex-col" style={{ paddingLeft:responsiveMd ? "280px":"0px" }}>
+              <div
+                className="flex flex-col"
+                style={{ paddingLeft: responsiveMd ? "280px" : "0px" }}
+              >
                 <div className="overflow-x-auto">
                   <div className="inline-block min-w-full align-middle">
                     <div className="overflow-hidden shadow">
@@ -264,15 +250,14 @@ const Report = () => {
                               scope="col"
                               className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
                             >
-                               reporter email
-                              
+                              reporter email
                             </th>
-                          
+
                             <th
                               scope="col"
                               className="p-0 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
                             >
-                             receipent
+                              receipent
                             </th>
                             <th
                               scope="col"
@@ -286,7 +271,6 @@ const Report = () => {
                             >
                               Reason
                             </th>
-                        
                           </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
@@ -310,8 +294,6 @@ const Report = () => {
                                     </div>
                                   </td>
                                   <td className="flex items-center p-4 mr-8 space-x-6 whitespace-nowrap dark:text-white">
-                                   
-
                                     {report.reporter.nickName}
                                   </td>
                                   <td className="max-w-sm p-0 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">
@@ -324,7 +306,7 @@ const Report = () => {
                                   <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {report.reportedUser.email}
                                   </td>
-                                  
+
                                   <td className="p-1 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
                                     {showReason &&
                                       console.log(
@@ -348,18 +330,18 @@ const Report = () => {
                                     )}
                                   </td>
                                   <td className="p-4 space-x-2 whitespace-nowrap">
-
-
-                                    <div >
+                                    <div>
                                       <label className="flex items-center">
                                         <input
                                           type="checkbox"
                                           className="sr-only peer"
-                                          
-                                        
-                                          onClick={()=>changeReadStatus(report._id,report.marked)}
+                                          onClick={() =>
+                                            changeReadStatus(
+                                              report._id,
+                                              report.marked
+                                            )
+                                          }
                                           defaultChecked={report.marked}
-                                       
                                         />
                                         <div className="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"></div>
                                         <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -367,8 +349,6 @@ const Report = () => {
                                         </span>
                                       </label>
                                     </div>
-
-
                                   </td>
                                 </tr>
                               );
@@ -379,8 +359,6 @@ const Report = () => {
                   </div>
                 </div>
               </div>
-
-            
             </div>
           </div>
         </div>
