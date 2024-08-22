@@ -123,7 +123,7 @@ const SubscriptionList = () => {
         <div style={{ paddingTop: "20px" }}>
           <br></br>
           <div>
-            <div className=" bg-white dark:bg-gray-800">
+            <div className=" bg-white dark:bg-gray-800 h-screen">
               <br></br>
 
               <div
