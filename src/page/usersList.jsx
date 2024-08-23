@@ -178,9 +178,9 @@ const Userslist = () => {
     const readableDate = date.toLocaleDateString("en-US", options);
 
     const s = readableDate?.split(",");
-   
+
     const r = s[0];
-  
+
     const a = r.split(" ");
     a.reverse();
     const p = a.join(" ");

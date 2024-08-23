@@ -20,7 +20,7 @@ const Report = () => {
     // axios.get('http://localhost:5000/getAllReports')
 
     axios
-      .get("http://localhost:5000/getAllReports", {
+      .get("https://anonymous10.cloud/getAllReports", {
         headers: {
           // Define your headers here
           "Content-Type": "application/json", // Example content type
@@ -29,6 +29,8 @@ const Report = () => {
       })
       .then((res) => {
         if (res.data.data) {
+          console.log("all report ")
+          console.log(res.data.data)
           setAllReport(res.data.data);
         }
       });
